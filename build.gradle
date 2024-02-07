@@ -1,0 +1,62 @@
+subprojects {
+    plugins.apply("java-library")
+    plugins.apply("java")
+
+    group = 'org.chun'
+    version = '0.0.1'
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    ext {
+        springBootVersion = '3.2.0'
+    }
+
+    dependencies {
+
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    tasks.register('prepareKotlinBuildScriptModel') {
+
+    }
+}
+
+tasks.register('refreshGit') {
+
+    File rootFile = file('.gitignore')
+    if (rootFile.exists()) {
+        println '[ Overwrite GitIgnore File From Nuance ]'
+        subprojects.forEach { sub ->
+            print sub.name + '...'
+            exec {
+                commandLine 'cp', rootFile.path, sub.projectDir.path + '/.gitignore'
+            }
+            println 'done'
+        }
+    }
+}
+
+tasks.register('export', Copy) {
+
+    dependsOn 'clean', 'build'
+    doLast {
+
+        copy {
+            from "./build/libs/" + ""
+            into "${System.getProperty('user.home')}/Downloads"
+        }
+    }
+}
