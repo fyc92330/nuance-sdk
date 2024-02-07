@@ -1,18 +1,20 @@
-subprojects {
+allprojects {
     plugins.apply("java-library")
     plugins.apply("java")
 
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+subprojects {
+
     group = 'org.chun'
     version = '0.0.1'
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 
     ext {
         springBootVersion = '3.2.0'
-    }
-
-    dependencies {
-
     }
 
     tasks.named('test') {
@@ -32,6 +34,24 @@ subprojects {
     tasks.register('prepareKotlinBuildScriptModel') {
 
     }
+}
+
+dependencies {
+    implementation project(':aws')
+    implementation project(':base')
+    implementation project(':cache')
+    implementation project(':cipher')
+    implementation project(':csv')
+    implementation project(':jackson')
+    implementation project(':job')
+    implementation project(':jwt')
+    implementation project(':line')
+    implementation project(':log4j')
+    implementation project(':mybatis')
+    implementation project(':rabbitmq')
+    implementation project(':redis')
+    implementation project(':transactional')
+    implementation project(':web')
 }
 
 tasks.register('refreshGit') {
