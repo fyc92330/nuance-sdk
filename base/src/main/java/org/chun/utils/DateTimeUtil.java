@@ -6,7 +6,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import org.chun.helper.ThreadDateFormatter;
 
-public class DateTimeUtils {
+public class DateTimeUtil {
 
 
   public static String format(LocalDateTime localDateTime) {
