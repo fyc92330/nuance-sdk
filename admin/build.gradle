@@ -18,6 +18,7 @@ repositories {
 
 dependencies {
     implementation files('nuance.jar')
+    implementation project(':jackson')
     implementation project(':line')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'

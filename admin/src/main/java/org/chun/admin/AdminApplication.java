@@ -1,46 +1,41 @@
 package org.chun.admin;
 
+import com.linecorp.bot.model.event.CallbackRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.chun.helper.LineClient;
+import org.chun.util.JsonUtils;
+import org.chun.utils.LineUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RequiredArgsConstructor
+@RestController
+@ComponentScan("org.chun.config")
 @SpringBootApplication
 public class AdminApplication {
 
-
+  private LineClient lineClient;
 
   @PostMapping("/line/callback")
-  public String lineCallBack(@RequestBody CallbackRequest request,
+  public ResponseEntity<?> lineCallBack(@RequestBody CallbackRequest request,
       @RequestHeader(name = "x-line-signature") String signature) {
 
     log.info("data:{}", request);
     log.info("signature:{}", signature);
 
-    for (Event event : request.getEvents()) {
-      if (event instanceof MessageEvent) {
-
-        MessageContent content = ((MessageEvent<?>) event).getMessage();
-        if (content instanceof TextMessageContent) {
-          if ("閉嘴啦小GD".contains(((TextMessageContent) content).getText())) {
-            String replyToken = ((MessageEvent<?>) event).getReplyToken();
-            notificationService.replyMessage("幹", replyToken);
-            System.exit(SpringApplication.exit(context));
-          }
-        }
-      }
-    }
-
-
-    return "index";
+    return ResponseEntity.ok().build();
   }
 
 
@@ -53,7 +48,7 @@ public class AdminApplication {
   @Bean
   public ApplicationListener<ApplicationReadyEvent> readyEventApplicationListener() {
 
-    return event -> log.info("Admin Application Start, {}", event);
+    return event -> log.info("Admin Application Start, {}", JsonUtils.SYSTEM.toJson(event));
   }
 
 }

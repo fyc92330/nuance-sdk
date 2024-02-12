@@ -2,6 +2,10 @@ allprojects {
     plugins.apply("java-library")
     plugins.apply("java")
 
+    repositories {
+        mavenCentral()
+    }
+
     java {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -21,10 +25,6 @@ subprojects {
         useJUnitPlatform()
     }
 
-    repositories {
-        mavenCentral()
-    }
-
     configurations {
         compileOnly {
             extendsFrom annotationProcessor
@@ -37,21 +37,21 @@ subprojects {
 }
 
 dependencies {
-    implementation project(':aws')
-    implementation project(':base')
-    implementation project(':cache')
-    implementation project(':cipher')
-    implementation project(':csv')
-    implementation project(':jackson')
-    implementation project(':job')
-    implementation project(':jwt')
-    implementation project(':line')
-    implementation project(':log4j')
-    implementation project(':mybatis')
-    implementation project(':rabbitmq')
-    implementation project(':redis')
-    implementation project(':transactional')
-    implementation project(':web')
+    api project(':aws')
+    api project(':base')
+    api project(':cache')
+    api project(':cipher')
+    api project(':csv')
+    api project(':jackson')
+    api project(':job')
+    api project(':jwt')
+    api project(':line')
+    api project(':log4j')
+    api project(':mybatis')
+    api project(':rabbitmq')
+    api project(':redis')
+    api project(':transactional')
+    api project(':web')
 }
 
 tasks.register('refreshGit') {

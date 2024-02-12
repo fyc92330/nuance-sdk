@@ -2,7 +2,7 @@ dependencies {
     implementation project(':jackson')
 
     implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '3.2.0'
-    implementation group: 'com.linecorp.bot', name: 'line-bot-api-client', version: '6.0.0'
+    api group: 'com.linecorp.bot', name: 'line-bot-api-client', version: '6.0.0'
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
