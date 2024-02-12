@@ -37,21 +37,7 @@ subprojects {
 }
 
 dependencies {
-    api project(':aws')
-    api project(':base')
-    api project(':cache')
-    api project(':cipher')
-    api project(':csv')
-    api project(':jackson')
-    api project(':job')
-    api project(':jwt')
-    api project(':line')
-    api project(':log4j')
-    api project(':mybatis')
-    api project(':rabbitmq')
-    api project(':redis')
-    api project(':transactional')
-    api project(':web')
+
 }
 
 tasks.register('refreshGit') {
@@ -69,14 +55,38 @@ tasks.register('refreshGit') {
     }
 }
 
-tasks.register('export', Copy) {
+tasks.register('importall', Copy) {
 
-    dependsOn 'clean', 'build'
-    doLast {
+    dependsOn subprojects.jar
+    from subprojects.collect { project -> project.file('build/classes') }
+    into 'build/classes'
 
-        copy {
-            from "./build/libs/" + ""
-            into "${System.getProperty('user.home')}/Downloads"
+    // 重複時略過
+    eachFile { fileDetails ->
+        def targetFile = new File("build/classes-all/${fileDetails.relativePath}")
+        if (targetFile.exists()) {
+            println "Skipping: ${fileDetails.relativePath} (file already exists)"
+            fileDetails.exclude()
         }
     }
+}
+
+tasks.register('export', Copy) {
+    dependsOn jar
+
+    from 'build/libs/nuance.jar'
+    into project.rootDir
+}
+
+assemble.dependsOn(export)
+
+jar {
+    dependsOn clean, importall
+
+    from 'build/classes'
+    archiveBaseName = 'nuance'
+}
+
+clean {
+    dependsOn subprojects.clean
 }
