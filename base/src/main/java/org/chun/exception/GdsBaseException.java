@@ -20,4 +20,16 @@ public class GdsBaseException extends RuntimeException {
 		this.type = type;
 	}
 
+	public GdsBaseException(GdsStatusType type, Throwable cause) {
+
+		super(type.getMessage(), cause);
+		this.type = type;
+	}
+
+	public GdsBaseException(GdsStatusType type, String message, Throwable cause) {
+
+		super(message, cause);
+		this.type = type;
+	}
+
 }

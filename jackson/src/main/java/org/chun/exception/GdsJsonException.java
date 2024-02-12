@@ -1,15 +1,13 @@
 package org.chun.exception;
 
-public class GdsJsonException extends RuntimeException {
+import org.chun.enums.GdsStatusType;
 
-  public GdsJsonException(String message) {
-
-    super(message);
-  }
+public class GdsJsonException extends GdsBaseException {
 
 
-  public GdsJsonException(String message, Throwable cause) {
+	public GdsJsonException(String message, Throwable cause) {
 
-    super(message, cause);
-  }
+		super(GdsStatusType.UNKNOWN_ERROR, message, cause);
+	}
+
 }

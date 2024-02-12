@@ -20,4 +20,16 @@ public class GdsCoreException extends Exception {
 		this.type = type;
 	}
 
+	public GdsCoreException(GdsStatusType type, Throwable cause) {
+
+		super(type.getMessage(), cause);
+		this.type = type;
+	}
+
+	public GdsCoreException(GdsStatusType type, String message, Throwable cause) {
+
+		super(message, cause);
+		this.type = type;
+	}
+
 }

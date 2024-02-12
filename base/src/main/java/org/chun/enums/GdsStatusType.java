@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum GdsStatusType {
 
 	SUCCESS("0000", "Success."),
+	UNKNOWN_ERROR("9999", "Unknown Error."),
 	;
 
 	private final String statusCode;
