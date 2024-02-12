@@ -1,4 +1,4 @@
-package org.chun.util;
+package org.chun.utils;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,9 +12,9 @@ import org.chun.handler.Date2ISO8601Serializer;
 import org.chun.handler.ISO86012DateSerializer;
 import org.chun.handler.ISO86012LocalDateTimeSerializer;
 import org.chun.handler.LocalDateTime2ISO8601Serializer;
-import org.chun.helpler.JsonHelper;
+import org.chun.helper.JsonHelper;
 
-public class JsonUtils {
+public class JsonUtil {
 
   public static final JsonHelper SYSTEM = new JsonHelper(new ObjectMapper());
 
