@@ -1,7 +1,5 @@
 rootProject.name = 'nuance'
 
-include 'admin'
-
 include 'aws'
 include 'base'
 include 'cache'
