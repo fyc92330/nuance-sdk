@@ -1,16 +1,12 @@
 package org.chun.exception;
 
-public class GdsCacheException extends RuntimeException {
+import org.chun.enums.GdsStatusType;
 
-	public GdsCacheException(String message) {
-
-		super(message);
-	}
-
+public class GdsCacheException extends GdsBaseException {
 
 	public GdsCacheException(String message, Throwable cause) {
 
-		super(message, cause);
+		super(GdsStatusType.UNKNOWN_ERROR, message, cause);
 	}
 
 }

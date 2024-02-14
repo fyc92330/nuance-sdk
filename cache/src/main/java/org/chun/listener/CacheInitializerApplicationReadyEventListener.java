@@ -1,7 +1,7 @@
 package org.chun.listener;
 
 import org.chun.cache.CacheApplicationInitializer;
-import org.chun.exception.GdsCacheException;
+import org.chun.exception.GdsApplicationReadyCacheException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +27,8 @@ public class CacheInitializerApplicationReadyEventListener implements Applicatio
 			try {
 				cache.init();
 				log.info("{} init success.", cacheName);
-			} catch (Exception e){
-				throw new GdsCacheException()
+			} catch (Exception e) {
+				throw new GdsApplicationReadyCacheException(cacheName, e);
 			}
 		}
 	}

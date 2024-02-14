@@ -1,0 +1,5 @@
+dependencies {
+    implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
+    implementation group: 'com.squareup.retrofit2', name: 'converter-jackson', version: '2.9.0'
+    implementation group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '3.14.9'
+}

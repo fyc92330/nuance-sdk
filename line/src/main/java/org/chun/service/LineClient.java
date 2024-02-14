@@ -1,8 +1,11 @@
-package org.chun.helper;
+package org.chun.service;
 
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.model.PushMessage;
 import java.util.Collections;
+
+import com.linecorp.bot.model.ReplyMessage;
+import com.linecorp.bot.model.message.TemplateMessage;
 import lombok.RequiredArgsConstructor;
 import org.chun.utils.LineUtil;
 import org.springframework.stereotype.Component;

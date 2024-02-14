@@ -1,8 +1,10 @@
 package org.chun.utils;
 
 import com.linecorp.bot.model.PushMessage;
+import com.linecorp.bot.model.event.message.ImageMessageContent;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.TextMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 
