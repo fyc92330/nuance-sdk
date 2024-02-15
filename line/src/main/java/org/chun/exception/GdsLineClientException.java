@@ -1,6 +1,6 @@
 package org.chun.exception;
 
-import org.chun.enums.GdsStatusType;
+import org.chun.constants.GdsStatusType;
 
 public class GdsLineClientException extends GdsBaseException {
 

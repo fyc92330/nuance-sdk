@@ -1,6 +1,6 @@
 package org.chun.listener;
 
-import org.chun.cache.CacheApplicationInitializer;
+import org.chun.cache.CacheInitializer;
 import org.chun.exception.GdsApplicationReadyCacheException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class CacheInitializerApplicationReadyEventListener implements Applicatio
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 
-		for (CacheApplicationInitializer cache : applicationContext.getBeansOfType(CacheApplicationInitializer.class).values()) {
+		for (CacheInitializer cache : applicationContext.getBeansOfType(CacheInitializer.class).values()) {
 			String cacheName = cache.getClass().getSimpleName();
 
 			try {
