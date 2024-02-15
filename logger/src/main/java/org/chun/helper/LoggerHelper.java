@@ -1,6 +1,6 @@
 package org.chun.helper;
 
-import org.chun.enums.LoggerType;
+import org.chun.constants.LoggerType;
 
 import java.util.logging.Logger;
 

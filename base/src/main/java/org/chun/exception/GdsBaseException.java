@@ -1,7 +1,7 @@
 package org.chun.exception;
 
 import lombok.Getter;
-import org.chun.enums.GdsStatusType;
+import org.chun.constants.GdsStatusType;
 
 @Getter
 public class GdsBaseException extends RuntimeException {

@@ -1,4 +1,4 @@
-package org.chun.enums;
+package org.chun.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

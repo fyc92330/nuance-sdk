@@ -1,27 +1,36 @@
 package org.chun.cache;
 
-public final class CacheKey {
+import java.io.Serializable;
+import lombok.Getter;
 
-	private final String key;
+@Getter
+public final class CacheKey implements Serializable {
 
-	CacheKey(String key) {
+  private static final long serialVersionUID = 1L;
 
-		this.key = key;
-	}
+  private final String key;
 
 
-	public static CacheKey of(Object... params) {
+  CacheKey(String key) {
 
-		String[] parts = new String[params.length];
-		for (int i = 0; i < parts.length; i++) {
-			parts[i] = String.valueOf(params[i]);
-		}
-		return new CacheKey(String.join("_", parts));
-	}
+    this.key = key;
+  }
 
-	public String get() {
 
-		return this.key;
-	}
+  public static CacheKey of(Object... params) {
+
+    String[] parts = new String[params.length];
+    for (int i = 0; i < parts.length; i++) {
+      parts[i] = String.valueOf(params[i]);
+    }
+    return new CacheKey(String.join("_", parts));
+  }
+
+
+  @Override
+  public int hashCode() {
+
+    return this.key.hashCode();
+  }
 
 }
