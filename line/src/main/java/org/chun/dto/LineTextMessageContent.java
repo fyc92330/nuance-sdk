@@ -1,9 +1,10 @@
 package org.chun.dto;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class LineTextMessageContent implements LineMessageContent {
 
 	private String text;
+
 }

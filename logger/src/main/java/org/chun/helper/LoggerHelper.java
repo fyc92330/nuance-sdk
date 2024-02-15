@@ -11,4 +11,6 @@ public class LoggerHelper extends Logger {
 		super(type.getPrefix(), type.name());
 	}
 
+
+
 }
