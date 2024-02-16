@@ -1,11 +1,13 @@
 package org.chun.cache;
 
+import java.io.Serial;
 import java.io.Serializable;
 import lombok.Getter;
 
 @Getter
 public final class CacheKey implements Serializable {
 
+  @Serial
   private static final long serialVersionUID = 1L;
 
   private final String key;
