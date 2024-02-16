@@ -13,6 +13,8 @@ public class LogUtil {
 
   public static final Logger RABBIT = LoggerHelper.create(LoggerType.RABBIT);
 
+  public static final Logger REDIS = LoggerHelper.create(LoggerType.RABBIT);
+
   public static final Logger DATABASE = LoggerHelper.create(LoggerType.DATABASE);
 
   public static final Logger CIPHER = LoggerHelper.create(LoggerType.CIPHER);
