@@ -1,15 +1,16 @@
 package org.chun.constants;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum LoggerType {
 
-	SYSTEM("system:", "[]"),
-	;
-
-	private final String prefix;
-	private final String pattern;
+  SYSTEM,
+  CACHE,
+  RABBIT,
+  DATABASE,
+  CIPHER,
+  PARSER, // csv, json
+  SCHEDULE,
+  THIRD_PARTY, // aws, line, ragic
+  REDIS,
+  TRANSACTION,
+  ;
 }

@@ -2,7 +2,6 @@ dependencies {
     implementation project(':base')
     implementation project(':jackson')
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '3.2.0'
     api group: 'com.linecorp.bot', name: 'line-bot-api-client', version: '6.0.0'
 
 //    implementation group: 'com.linecorp.bot', name: 'line-bot-spring-boot-client', version: '8.2.0'

@@ -1,3 +1,6 @@
 dependencies {
-    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation project(':base')
+
+    implementation 'org.apache.logging.log4j:log4j-core:2.21.1'
+    runtimeOnly 'org.apache.logging.log4j:log4j-jul:2.21.1'
 }
