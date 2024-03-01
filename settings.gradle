@@ -17,4 +17,5 @@ include 'redis'
 include 'retrofit'
 include 'transactional'
 include 'web'
+include 'okhttp'
 
