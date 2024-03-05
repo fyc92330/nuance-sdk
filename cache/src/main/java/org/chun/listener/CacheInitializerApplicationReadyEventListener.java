@@ -1,9 +1,8 @@
 package org.chun.listener;
 
 import org.chun.cache.CacheInitializer;
-import org.chun.exception.GdsApplicationReadyCacheException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.chun.exception.GdsCacheInitException;
+import org.chun.utils.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationContext;
@@ -12,8 +11,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CacheInitializerApplicationReadyEventListener implements ApplicationListener<ApplicationReadyEvent> {
-
-	private static final Logger log = LoggerFactory.getLogger(CacheInitializerApplicationReadyEventListener.class);
 
 	@Autowired
 	private ApplicationContext applicationContext;
@@ -26,9 +23,9 @@ public class CacheInitializerApplicationReadyEventListener implements Applicatio
 
 			try {
 				cache.init();
-				log.info("{} init success.", cacheName);
+				LogUtil.CACHE.info("{} init success.", cacheName);
 			} catch (Exception e) {
-				throw new GdsApplicationReadyCacheException(cacheName, e);
+				throw new GdsCacheInitException(cacheName, e);
 			}
 		}
 	}

@@ -5,13 +5,14 @@ import java.util.Map;
 
 public interface CacheEditor<T> {
 
-  void add(CacheKey key, T param);
+	void add(CacheKey key, T param);
 
-  void addAll(Map<CacheKey, T> data);
+	void addAll(Map<CacheKey, T> data);
 
-  void refresh();
+	void refresh();
 
-  void updatedTime();
+	void updatedTime();
 
-  boolean isLatestTime(LocalDateTime now);
+	boolean isLatestTime(LocalDateTime now);
+
 }
