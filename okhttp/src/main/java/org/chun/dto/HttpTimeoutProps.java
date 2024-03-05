@@ -1,4 +1,4 @@
-package gw.dto;
+package org.chun.dto;
 
 import lombok.Data;
 

@@ -6,6 +6,7 @@ public enum LoggerType {
   CACHE,
   RABBIT,
   DATABASE,
+  HTTP,
   CIPHER,
   PARSER, // csv, json
   SCHEDULE,

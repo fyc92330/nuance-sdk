@@ -1,12 +1,12 @@
-package gw.handler;
+package org.chun.handler;
 
-import com.gw.dto.HttpTimeoutProps;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.chun.dto.HttpTimeoutProps;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 

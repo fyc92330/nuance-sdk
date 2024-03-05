@@ -1,4 +1,4 @@
-package gw.aop;
+package org.chun.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,7 +10,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface HttpTimeout {
 
-  int connectTimeout() default 5;
+	int connectTimeout() default 5;
 
-  int socketTimeout() default 30;
+	int socketTimeout() default 30;
+
 }

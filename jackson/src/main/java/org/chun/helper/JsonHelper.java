@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class JsonHelper {
     objectMapper.enable(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN);
     objectMapper.enable(DeserializationFeature.USE_LONG_FOR_INTS);
     objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-    objectMapper.registerModule(new JavaTimeModule());
+//    objectMapper.registerModule(new JavaTimeModule());
 
     SimpleModule simpleModule = new SimpleModule();
     simpleModule.addSerializer(LocalDateTime.class, new LocalDateTime2LongSerializer());
