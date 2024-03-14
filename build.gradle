@@ -1,32 +1,39 @@
-subprojects {
+allprojects {
     plugins.apply("java-library")
     plugins.apply("java")
 
+    repositories {
+        mavenCentral()
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+subprojects {
+
     group = 'org.chun'
     version = '0.0.1'
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 
     ext {
         springBootVersion = '3.2.0'
-    }
-
-    dependencies {
-
     }
 
     tasks.named('test') {
         useJUnitPlatform()
     }
 
-    repositories {
-        mavenCentral()
-    }
-
     configurations {
         compileOnly {
             extendsFrom annotationProcessor
         }
+    }
+
+    dependencies {
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
     }
 
     tasks.register('prepareKotlinBuildScriptModel') {
@@ -49,14 +56,38 @@ tasks.register('refreshGit') {
     }
 }
 
-tasks.register('export', Copy) {
+tasks.register('importall', Copy) {
 
-    dependsOn 'clean', 'build'
-    doLast {
+    dependsOn subprojects.jar
+    from subprojects.collect { project -> project.file('build/classes') }
+    into 'build/classes'
 
-        copy {
-            from "./build/libs/" + ""
-            into "${System.getProperty('user.home')}/Downloads"
+    // 重複時略過
+    eachFile { fileDetails ->
+        def targetFile = new File("build/classes-all/${fileDetails.relativePath}")
+        if (targetFile.exists()) {
+            println "Skipping: ${fileDetails.relativePath} (file already exists)"
+            fileDetails.exclude()
         }
     }
+}
+
+tasks.register('export', Copy) {
+    dependsOn jar
+
+    from 'build/libs/nuance.jar'
+    into project.rootDir
+}
+
+assemble.dependsOn(export)
+
+jar {
+    dependsOn clean, importall
+
+    from 'build/classes'
+    archiveBaseName = 'nuance'
+}
+
+clean {
+    dependsOn subprojects.clean
 }

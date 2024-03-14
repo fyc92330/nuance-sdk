@@ -1,18 +1,5 @@
 rootProject.name = 'nuance'
 
-include 'aws'
 include 'base'
-include 'cache'
-include 'cipher'
-include 'csv'
 include 'jackson'
-include 'job'
-include 'jwt'
-include 'line'
-include 'log4j'
-include 'mybatis'
-include 'rabbitmq'
-include 'redis'
-include 'transactional'
-include 'web'
 
