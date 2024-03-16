@@ -6,13 +6,13 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import org.chun.utils.DateTimeUtils;
+import org.chun.utils.DateTimeUtil;
 
 public class ISO86012LocalDateTimeSerializer extends JsonDeserializer<LocalDateTime> {
 
   @Override
   public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
 
-    return DateTimeUtils.parse(jsonParser.getValueAsString());
+    return DateTimeUtil.parse(jsonParser.getValueAsString());
   }
 }

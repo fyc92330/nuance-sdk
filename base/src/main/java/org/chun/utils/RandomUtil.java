@@ -2,7 +2,7 @@ package org.chun.utils;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
-public class RandomUtils {
+public class RandomUtil {
 
 
   private static final String DIGITS = "0123456789";

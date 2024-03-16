@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 
-public class XssUtils {
+public class XssUtil {
 
   private static final int XSS_MIN_LENGTH = 6;
 

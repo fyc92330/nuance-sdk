@@ -5,13 +5,13 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import org.chun.utils.DateTimeUtils;
+import org.chun.utils.DateTimeUtil;
 
 public class LocalDateTime2LongSerializer extends JsonSerializer<LocalDateTime> {
 
   @Override
   public void serialize(LocalDateTime localDateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
 
-    jsonGenerator.writeNumber(DateTimeUtils.toEpochMilli(localDateTime));
+    jsonGenerator.writeNumber(DateTimeUtil.toEpochMilli(localDateTime));
   }
 }

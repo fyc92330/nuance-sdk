@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
+
+import org.chun.exception.GDJsonException;
 import org.chun.helper.ThreadDateFormatter;
 
 public class ISO86012DateSerializer extends JsonDeserializer<Date> {
@@ -18,7 +20,7 @@ public class ISO86012DateSerializer extends JsonDeserializer<Date> {
 
       return ThreadDateFormatter.SDF.get().parse(jsonParser.getValueAsString());
     } catch (ParseException e) {
-      throw new RuntimeException(e);
+      throw new GDJsonException(e);
     }
   }
 }

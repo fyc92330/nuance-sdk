@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 
-public class IpAddressUtils {
+public class IpAddressUtil {
 
   private static final int IP_ADDRESS_MAX_LENGTH = 39;
 
