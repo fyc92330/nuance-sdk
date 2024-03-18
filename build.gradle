@@ -19,6 +19,7 @@ subprojects {
 
     ext {
         springBootVersion = '3.2.0'
+        lombokVersion = '1.18.24'
     }
 
     tasks.named('test') {
@@ -32,9 +33,11 @@ subprojects {
     }
 
     dependencies {
-        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
-        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
+        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${springBootVersion}"
     }
+
 
     tasks.register('prepareKotlinBuildScriptModel') {
 
